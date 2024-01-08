@@ -8,6 +8,7 @@ from decouple import config
 import openai
 
 # Custom Function Imports
+from functions.database import store_messages
 from functions.openai_requests import convert_audio_to_text, get_chat_response
 
 
@@ -57,6 +58,10 @@ async def get_audio():
     
     # Get ChatGPT Response
     chat_response = get_chat_response(message_decoded)
+
+    # Store messages
+    store_messages(message_decoded, chat_response)
+
 
     print(chat_response)
     

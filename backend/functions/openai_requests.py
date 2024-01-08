@@ -42,8 +42,8 @@ def get_chat_response(message_input):
     try:
         response = client.chat.completions.create(model="gpt-4-1106-preview",
         messages=messages)
-        print(response)
         message_text = response.choices[0].message.content
+        print(message_text)
         return message_text
     except Exception as e:
         print(e)
